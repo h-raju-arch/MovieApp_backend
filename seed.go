@@ -32,7 +32,12 @@ type execer interface {
 
 func main() {
 	database := db.Open()
-	defer database.Close()
+	defer func(database *sql.DB) {
+		err := database.Close()
+		if err != nil {
+			log.Fatalf("err: %v", err)
+		}
+	}(database)
 
 	ctx := context.Background()
 	log.Println("seeding database..")
