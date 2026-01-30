@@ -2,10 +2,10 @@ package movierepo
 
 import "database/sql"
 
-type Movie_repo struct {
+type MovieRepo struct {
 	db *sql.DB
 }
 
-func New_Movie_Repo(db *sql.DB) *Movie_repo {
-	return &Movie_repo{db: db}
+func NewMovieRepo(db *sql.DB) *MovieRepo {
+	return &MovieRepo{db: db}
 }

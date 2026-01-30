@@ -7,7 +7,7 @@ import (
 	"github.com/h-raju-arch/MoiveApp_backend/internal/model"
 )
 
-func (r *Movie_repo) GetMovieBasebyId(ctx context.Context, id, lang string) (model.MovieResponse, error) {
+func (r MovieRepo) GetMovieBasebyId(ctx context.Context, id, lang string) (model.MovieResponse, error) {
 	var res model.MovieResponse
 
 	query := `SELECT 
@@ -37,7 +37,7 @@ func (r *Movie_repo) GetMovieBasebyId(ctx context.Context, id, lang string) (mod
 	return res, nil
 }
 
-func (r Movie_repo) FetchGenres(ctx context.Context, id string) ([]string, error) {
+func (r MovieRepo) FetchGenres(ctx context.Context, id string) ([]string, error) {
 
 	var res []string
 	query := `SELECT g.name FROM genres g JOIN movie_genres mg ON g.id = mg.genre_id  WHERE mg.movie_id = $1`
@@ -64,7 +64,7 @@ func (r Movie_repo) FetchGenres(ctx context.Context, id string) ([]string, error
 	return res, nil
 }
 
-func (r Movie_repo) FetchCredits(ctx context.Context, id string) ([]model.Credits_Response, error) {
+func (r MovieRepo) FetchCredits(ctx context.Context, id string) ([]model.Credits_Response, error) {
 	query := `SELECT p.name,p.known_for,c.credit_type
 	          FROM people p JOIN credits c on p.id = c.person_id
 			  WHERE c.movie_id = $1
@@ -91,7 +91,7 @@ func (r Movie_repo) FetchCredits(ctx context.Context, id string) ([]model.Credit
 	return resp, nil
 }
 
-func (r Movie_repo) FetchCompanies(ctx context.Context, id string) ([]string, error) {
+func (r MovieRepo) FetchCompanies(ctx context.Context, id string) ([]string, error) {
 
 	query := `SELECT c.name from companies c join movie_companies mc on
 	         c.id = mc.company_id WHERE mc.movie_id = $1`

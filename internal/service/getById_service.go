@@ -9,7 +9,7 @@ import (
 
 //getMoviebyId
 
-func (r Movie_services) GetMovieById(ctx context.Context, id, lang string, appendtoresponse []string) (model.MovieResponse, error) {
+func (r Movieservices) GetMovieById(ctx context.Context, id, lang string, appendtoresponse []string) (model.MovieResponse, error) {
 	movie, err := r.repo.GetMovieBasebyId(ctx, id, lang)
 
 	if err != nil {

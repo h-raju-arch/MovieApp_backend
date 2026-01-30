@@ -5,7 +5,7 @@ import (
 	"github.com/h-raju-arch/MoiveApp_backend/internal/service"
 )
 
-func NewRouter(movie_svc service.Movie_Service) *gin.Engine {
+func NewRouter(movie_svc service.MovieService) *gin.Engine {
 	router := gin.Default()
 	h := New_Movie_Handler(movie_svc)
 

@@ -10,7 +10,7 @@ import (
 func main() {
 	database := db.Open()
 	defer database.Close()
-	repo := movierepo.New_Movie_Repo(database)
+	repo := movierepo.NewMovieRepo(database)
 	svc := service.New_Movie_Service(*repo)
 	router := httptransport.NewRouter(svc)
 
