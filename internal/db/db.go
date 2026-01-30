@@ -9,12 +9,12 @@ import (
 )
 
 func Open() *sql.DB {
-	db_url := os.Getenv("DATABASE_URL")
-	if db_url == "" {
+	dburl := os.Getenv("DATABASE_URL")
+	if dburl == "" {
 		log.Fatal("Empty database string")
 	}
 	var err error
-	db, err := sql.Open("postgres", db_url)
+	db, err := sql.Open("postgres", dburl)
 
 	if err != nil {
 		log.Fatal("Error while Opening db connection", err)

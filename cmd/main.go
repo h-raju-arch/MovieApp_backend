@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/h-raju-arch/movie_app_backend/internal/db"
-	movierepo "github.com/h-raju-arch/movie_app_backend/internal/repo/movie_repo"
-	"github.com/h-raju-arch/movie_app_backend/internal/service"
-	httptransport "github.com/h-raju-arch/movie_app_backend/internal/transport/http"
+	httptransport "ggithub.com/h-raju-arch/MoiveApp_backend/internal/transport/http"
+	"github.com/h-raju-arch/MoiveApp_backend/internal/db"
+	movierepo "github.com/h-raju-arch/MoiveApp_backend/internal/repo/movie_repo"
+	"github.com/h-raju-arch/MoiveApp_backend/internal/service"
 )
 
 func main() {
