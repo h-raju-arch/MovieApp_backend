@@ -1,0 +1,18 @@
+package main
+
+import (
+	"github.com/h-raju-arch/MoiveApp_backend/internal/db"
+	movierepo "github.com/h-raju-arch/MoiveApp_backend/internal/repo/movie_repo"
+	"github.com/h-raju-arch/MoiveApp_backend/internal/service"
+	httptransport "github.com/h-raju-arch/MoiveApp_backend/internal/transport/http"
+)
+
+func main() {
+	database := db.Open()
+	defer database.Close()
+	repo := movierepo.NewMovieRepo(database)
+	svc := service.New_Movie_Service(*repo)
+	router := httptransport.NewRouter(svc)
+
+	router.Run(":3000")
+}
